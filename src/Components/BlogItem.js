@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 
-const BlogItem = ({ blog: b, id }) => {
+const BlogItem = ({ blog: b }) => {
   return (
-    <div className="blog-preview" key={id}>
-      <Link to={`/blogs/${id}`}>
+    <div className="blog-preview" key={b.id}>
+      <Link to={`/blogs/${b.id}`}>
         <h2>{b.title}</h2>
         <p>Written by {b.author}</p>
       </Link>
-      <div className="blog-preview" key={id}>  );
+    </div>
+  );
 };
 
 export default BlogItem;
