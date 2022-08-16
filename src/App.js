@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Create from "./Components/Create";
 import Home from "./Components/Home";
 import Navbar from "./Components/Navbar";
 
@@ -9,12 +10,13 @@ function App() {
         <Navbar />
         <div className="content">
           <Routes>
-            <Route path="/" element={<Home />} />      
+            <Route exact path="/" element={<Home />} />
+            <Route path="/create" element={<Create />} />
           </Routes>
         </div>
       </div>
     </Router>
   );
-}
+};
 
 export default App;
