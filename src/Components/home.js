@@ -1,18 +1,18 @@
 import BlogList from "./BlogList";
 import useFetch from "./useFetch";
-
+import { blogEndPoint } from "./urls";
 
 const Home = () => {
-  const { data: blogs, isLoading, error } = useFetch("http://localhost:8000/blogs");
+  const { data, isLoading, error } = useFetch(blogEndPoint);
 
   return (
     <div className="home">
       {error && <div className="error"> {error} </div>}
       {isLoading && <div>Loading...</div>}
-      {blogs && <BlogList blogs={blogs} listTitle="All Blogs" />}
-      {blogs && (
+      {data && <BlogList blogs={data} listTitle="All Blogs" />}
+      {data && (
         <BlogList
-          blogs={blogs.filter((b) => b.author === "Mario")}
+          blogs={data.filter((b) => b.author === "Mario")}
           listTitle="Mario's Blogs"
         />
       )}
