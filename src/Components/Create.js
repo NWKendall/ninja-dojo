@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { blogEndPoint } from "./urls";
-import PostFunction from "./postFunction";
 
 const Create = () => {
   const [title, setTitle] = useState("");
@@ -9,12 +8,12 @@ const Create = () => {
   const [author, setAuthor] = useState("mario");
   const [isPending, setIsPending] = useState(false);
   let navigate = useNavigate();
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     const newBlog = { title, body, author };
     setIsPending(true);
-
+    
     fetch(blogEndPoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -26,6 +25,8 @@ const Create = () => {
     // new! replaced useHistory() hook | https://reactrouter.com/docs/en/v6/hooks/use-navigate
     navigate(-1);
   };
+
+
   return (
     <div className="create">
       <h2>Add A new Blog!</h2>
